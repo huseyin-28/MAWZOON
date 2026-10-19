@@ -1,594 +1,385 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#3b4d28">
-    <title>Mawzoon | تطبيق إدارة المشروع</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #3b4d28;
-            --primary-light: #526938;
-            --bg: #f4f5f0;
-            --card: #ffffff;
-            --text: #22252a;
-            --muted: #687063;
-            --success: #1f8b4c;
-            --warning: #d97706;
-            --danger: #dc2626;
-            --border: #dfe3d8;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Tajawal', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            padding-bottom: 60px;
-        }
-
-        /* Header */
-        header {
-            background: var(--primary);
-            color: #fff;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-        }
-
-        header h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        .backup-btns button {
-            background: rgba(255,255,255,0.18);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            margin-right: 6px;
-        }
-
-        /* Financial Dashboard Bar */
-        .finance-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 14px;
-            max-width: 1250px;
-            margin: 18px auto;
-            padding: 0 16px;
-        }
-
-        .fin-card {
-            background: var(--card);
-            padding: 16px;
-            border-radius: 12px;
-            border-right: 5px solid var(--primary);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-        }
-
-        .fin-card.paid { border-right-color: var(--success); }
-        .fin-card.unpaid { border-right-color: var(--warning); }
-        .fin-card.cost { border-right-color: var(--danger); }
-        .fin-card.profit { border-right-color: var(--primary); background: #eef3e8; }
-
-        .fin-card span {
-            font-size: 0.88rem;
-            color: var(--muted);
-            font-weight: 700;
-            display: block;
-        }
-
-        .fin-card strong {
-            font-size: 1.55rem;
-            font-weight: 800;
-            margin-top: 6px;
-            display: block;
-        }
-
-        /* Navigation Tabs (Tablet Friendly) */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            background: #e6e9df;
-            padding: 12px 16px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-
-        .tab-btn {
-            background: #fff;
-            border: 2px solid transparent;
-            padding: 12px 22px;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.2s;
-            flex: 1;
-            min-width: 170px;
-            max-width: 260px;
-            text-align: center;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1250px;
-            margin: 20px auto;
-            padding: 0 16px;
-        }
-
-        .section { display: none; }
-        .section.active { display: block; }
-
-        /* General Card & Forms */
-        .card {
-            background: var(--card);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .card h2 {
-            color: var(--primary);
-            font-size: 1.25rem;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--bg);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-            gap: 14px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-size: 0.88rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--text);
-        }
-
-        input, select, textarea {
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            background: #fafbf9;
-            color: var(--text);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: #fff;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .btn:active { transform: scale(0.98); }
-        .btn-success { background: var(--success); }
-        .btn-warning { background: var(--warning); }
-        .btn-danger { background: var(--danger); }
-        .btn-outline { background: #eef1ea; color: var(--primary); border: 1px solid var(--primary); }
-        .btn-sm { padding: 8px 12px; font-size: 0.88rem; }
-
-        /* Grids */
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 18px;
-        }
-
-        /* Client Card */
-        .item-card {
-            background: #fff;
-            border-radius: 14px;
-            padding: 18px;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--bg);
-            padding-bottom: 10px;
-        }
-
-        .item-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .pay-btn {
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.88rem;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-        }
-
-        .pay-btn.is-paid { background: #d1fae5; color: #065f46; }
-        .pay-btn.not-paid { background: #fee2e2; color: #991b1b; }
-
-        .macros-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: var(--bg);
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            gap: 6px;
-        }
-
-        .macros-grid div span { font-size: 0.78rem; color: var(--muted); display: block; }
-        .macros-grid div strong { font-size: 1.05rem; color: var(--primary); }
-
-        .row-between {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f8faf6;
-            padding: 10px 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .custom-fields-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .custom-field-row {
-            display: flex;
-            justify-content: space-between;
-            background: #fdfaf3;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            border: 1px dashed #d4a373;
-        }
-
-        /* Tables */
-        .table-wrap { overflow-x: auto; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: right;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            background: var(--bg);
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 0.92rem;
-        }
-
-        .inline-input {
-            width: 100px;
-            padding: 6px 8px;
-            font-size: 0.95rem;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-
-        /* Recipe Checklist */
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px;
-            background: var(--bg);
-            border-radius: 8px;
-            margin-bottom: 6px;
-            cursor: pointer;
-        }
-
-        .checklist-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--primary);
-        }
-
-        .checklist-item.checked span {
-            text-decoration: line-through;
-            color: var(--muted);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mawzoon | موزون</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#3b4d28;--bg:#f4f5f0;--c:#fff;--t:#222;--m:#687063;--ok:#1f8b4c;--w:#d97706;--err:#dc2626;--b:#dfe3d8}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
+body{background:var(--bg);color:var(--t);padding-bottom:50px}
+header{background:var(--p);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+header h1{font-size:1.35rem}
+.top-btns button{background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px}
+.fin-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:1200px;margin:15px auto;padding:0 15px}
+.f-card{background:var(--c);padding:14px;border-radius:10px;border-right:5px solid var(--p);box-shadow:0 2px 5px rgba(0,0,0,0.04)}
+.f-card.paid{border-right-color:var(--ok)}.f-card.unpaid{border-right-color:var(--w)}.f-card.cost{border-right-color:var(--err)}.f-card.prof{background:#eef3e8}
+.f-card span{font-size:.85rem;color:var(--m);font-weight:700;display:block}
+.f-card strong{font-size:1.45rem;font-weight:800;margin-top:4px;display:block}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;background:#e6e9df;padding:10px 15px;justify-content:center;position:sticky;top:0;z-index:99}
+.t-btn{background:#fff;border:none;padding:12px 18px;font-size:.95rem;font-weight:700;border-radius:8px;cursor:pointer;flex:1;min-width:160px;max-width:250px}
+.t-btn.active{background:var(--p);color:#fff}
+.wrap{max-width:1200px;margin:18px auto;padding:0 15px}
+.sec{display:none}.sec.active{display:block}
+.card{background:var(--c);border-radius:12px;padding:18px;margin-bottom:18px;border:1px solid var(--b)}
+.card h2{color:var(--p);font-size:1.2rem;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--bg)}
+.grid-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}
+.fg{display:flex;flex-direction:column}
+.fg label{font-size:.85rem;font-weight:700;margin-bottom:5px}
+input,select,textarea{padding:10px;border:1px solid var(--b);border-radius:8px;font-size:.95rem;background:#fafbf9}
+.btn{background:var(--p);color:#fff;border:none;padding:10px 18px;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer}
+.btn-ok{background:var(--ok)}.btn-err{background:var(--err)}.btn-out{background:#eef1ea;color:var(--p);border:1px solid var(--p)}.btn-sm{padding:6px 10px;font-size:.82rem}
+.cards-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.i-card{background:#fff;border-radius:12px;padding:16px;border:1px solid var(--b);display:flex;flex-direction:column;gap:10px}
+.row-b{display:flex;justify-content:space-between;align-items:center;background:#f8faf6;padding:8px 10px;border-radius:8px;border:1px solid var(--b)}
+.mac-g{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg);padding:8px;border-radius:8px;text-align:center}
+.mac-g span{font-size:.75rem;color:var(--m);display:block}.mac-g strong{color:var(--p)}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{padding:10px;text-align:right;border-bottom:1px solid var(--b)}
+th{background:var(--bg);color:var(--p)}
+.in-sm{width:90px;padding:5px;border-radius:6px;border:1px solid var(--b)}
+.chk-row{display:flex;align-items:center;gap:8px;padding:7px;background:var(--bg);border-radius:6px;margin-bottom:5px}
+.chk-row.done span{text-decoration:line-through;color:var(--m)}
+</style>
 </head>
 <body>
 
 <header>
-    <div>
-        <h1>MAWZOON | مـوزون</h1>
-    </div>
-    <div class="backup-btns">
-        <button onclick="exportData()">📥 حفظ نسخة احتياطية</button>
-        <button onclick="document.getElementById('importFile').click()">📤 استرجاع نسخة</button>
-        <input type="file" id="importFile" style="display:none" onchange="importData(event)">
-    </div>
+  <h1>MAWZOON | موزون <small id="sysStatus" style="font-size:.8rem;background:#1f8b4c;padding:3px 8px;border-radius:12px;margin-right:8px;">⏳</small></h1>
+  <div class="top-btns">
+    <button type="button" onclick="exportData()">📥 حفظ نسخة احتياطية</button>
+    <button type="button" onclick="document.getElementById('impF').click()">📤 استرجاع نسخة</button>
+    <input type="file" id="impF" style="display:none" onchange="importData(event)">
+  </div>
 </header>
 
-<!-- لوحة الحسابات والأرباح المباشرة -->
-<div class="finance-bar">
-    <div class="fin-card paid">
-        <span>💰 المدفوعات المستلمة (كاش)</span>
-        <strong id="finPaid">0.00 TL</strong>
-    </div>
-    <div class="fin-card unpaid">
-        <span>⏳ مبالغ قيد التحصيل (لم يدفع)</span>
-        <strong id="finUnpaid">0.00 TL</strong>
-    </div>
-    <div class="fin-card cost">
-        <span>🛒 التكلفة الإجمالية للمواد</span>
-        <strong id="finCost">0.00 TL</strong>
-    </div>
-    <div class="fin-card profit">
-        <span>📈 صافي الأرباح الفعلي</span>
-        <strong id="finProfit">0.00 TL</strong>
-    </div>
+<div class="fin-bar">
+  <div class="f-card paid"><span>💰 المدفوعات المستلمة (كاش)</span><strong id="fPaid">0.00 TL</strong></div>
+  <div class="f-card unpaid"><span>⏳ مبالغ قيد التحصيل (لم يدفع)</span><strong id="fUnpaid">0.00 TL</strong></div>
+  <div class="f-card cost"><span>🛒 التكلفة الإجمالية للمواد</span><strong id="fCost">0.00 TL</strong></div>
+  <div class="f-card prof"><span>📈 صافي الأرباح الفعلي</span><strong id="fProf">0.00 TL</strong></div>
 </div>
 
-<!-- أزرار التنقل -->
-<div class="nav-tabs">
-    <button class="tab-btn active" onclick="switchTab('clientsSec', this)">👤 المشتركون والمدفوعات</button>
-    <button class="tab-btn" onclick="switchTab('materialsSec', this)">🛒 المواد والتكلفة الإجمالية</button>
-    <button class="tab-btn" onclick="switchTab('calcSec', this)">⚖️ حاسبة تكلفة الطبق</button>
-    <button class="tab-btn" onclick="switchTab('recipesSec', this)">📖 دفتر الوصفات والمقادير</button>
+<div class="tabs">
+  <button type="button" class="t-btn active" onclick="openTab('secC',this)">👤 المشتركون والمدفوعات</button>
+  <button type="button" class="t-btn" onclick="openTab('secM',this)">🛒 المواد والتكلفة الإجمالية</button>
+  <button type="button" class="t-btn" onclick="openTab('secD',this)">⚖️ حاسبة تكلفة الطبق</button>
+  <button type="button" class="t-btn" onclick="openTab('secR',this)">📖 دفتر الوصفات والمقادير</button>
 </div>
 
-<div class="container">
-
-    <!-- 1. قسم المشتركين والمدفوعات -->
-    <div id="clientsSec" class="section active">
-        <div class="card">
-            <h2>+ إضافة مشترك جديد</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>اسم المشترك</label>
-                    <input type="text" id="cName" placeholder="مثال: عمر">
-                </div>
-                <div class="form-group">
-                    <label>مبلغ الاشتراك المتفق عليه (ليرة)</label>
-                    <input type="number" id="cPrice" placeholder="مثال: 1500">
-                </div>
-                <div class="form-group">
-                    <label>حالة الدفع</label>
-                    <select id="cPaid">
-                        <option value="true">✅ تم الدفع</option>
-                        <option value="false">❌ لم يدفع بعد</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>عدد الوجبات يومياً</label>
-                    <input type="number" id="cMeals" value="2">
-                </div>
-                <div class="form-group">
-                    <label>مدة الاشتراك (أيام)</label>
-                    <input type="number" id="cDays" value="6">
-                </div>
-                <div class="form-group">
-                    <label>السعرات (Kcal)</label>
-                    <input type="number" id="cCal" placeholder="2200">
-                </div>
-                <div class="form-group">
-                    <label>البروتين (g)</label>
-                    <input type="number" id="cPro" placeholder="160">
-                </div>
-                <div class="form-group">
-                    <label>الكارب (g)</label>
-                    <input type="number" id="cCarb" placeholder="200">
-                </div>
-                <div class="form-group">
-                    <label>الدهون (g)</label>
-                    <input type="number" id="cFat" placeholder="60">
-                </div>
-            </div>
-            <div class="form-group" style="margin-top: 12px;">
-                <label>ملاحظات أولية / انطباع المشترك عن الأكل</label>
-                <textarea id="cNotes" rows="2" placeholder="اكتب تفضيلات المشترك، حساسيته من أكل معين، أو رأيه في الوجبات..."></textarea>
-            </div>
-            <button class="btn" style="margin-top: 14px;" onclick="addClient()">+ إضافة المشترك للقائمة</button>
-        </div>
-
-        <div id="clientsGrid" class="grid-cards"></div>
+<div class="wrap">
+  <!-- 1. المشتركون -->
+  <div id="secC" class="sec active">
+    <div class="card">
+      <h2>+ إضافة مشترك جديد</h2>
+      <div class="grid-f">
+        <div class="fg"><label>اسم المشترك</label><input id="cName" placeholder="مثال: عمر"></div>
+        <div class="fg"><label>مبلغ الاشتراك (ليرة)</label><input type="number" id="cPrice" placeholder="1500"></div>
+        <div class="fg"><label>حالة الدفع</label><select id="cPaid"><option value="1">✅ تم الدفع</option><option value="0">❌ لم يدفع بعد</option></select></div>
+        <div class="fg"><label>الوجبات يومياً</label><input type="number" id="cMeals" value="2"></div>
+        <div class="fg"><label>أيام الاشتراك</label><input type="number" id="cDays" value="6"></div>
+        <div class="fg"><label>السعرات (Kcal)</label><input type="number" id="cCal" placeholder="2200"></div>
+        <div class="fg"><label>البروتين (g)</label><input type="number" id="cPro" placeholder="160"></div>
+        <div class="fg"><label>الكارب (g)</label><input type="number" id="cCarb" placeholder="200"></div>
+        <div class="fg"><label>الدهون (g)</label><input type="number" id="cFat" placeholder="60"></div>
+      </div>
+      <div class="fg" style="margin-top:10px"><label>انطباع المشترك وملاحظاتي الخاصة</label><textarea id="cNotes" rows="2" placeholder="اكتب تفضيلات المشترك أو رأيه في الوجبات..."></textarea></div>
+      <button type="button" class="btn" style="margin-top:12px" onclick="addClient()">+ إضافة المشترك للقائمة</button>
     </div>
+    <div id="cList" class="cards-g"></div>
+  </div>
 
-    <!-- 2. قسم المواد والتكلفة الإجمالية -->
-    <div id="materialsSec" class="section">
-        <div class="card">
-            <h2>+ تسجيل مادة خام جديدة (يدوياً)</h2>
-            <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 14px;">
-                سجّل كل مادة تشتريها وسعرها وكميتها ليقوم النظام بحساب إجمالي مصاريفك واستخدام الأسعار في حاسبة الأطباق.
-            </p>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>اسم المادة / المنتج</label>
-                    <input type="text" id="mName" placeholder="مثال: صدور دجاج، شوفان، علب...">
-                </div>
-                <div class="form-group">
-                    <label>وزن الوحدة بالجرام (أو العدد)</label>
-                    <input type="number" id="mWeight" value="1000" placeholder="1000 جرام = 1 كيلو">
-                </div>
-                <div class="form-group">
-                    <label>سعر الوحدة / الكيلو (ليرة)</label>
-                    <input type="number" id="mPrice" placeholder="مثال: 150">
-                </div>
-                <div class="form-group">
-                    <label>الكمية المشتراة فعلياً (كم كيلو/عبوة اشتريت؟)</label>
-                    <input type="number" id="mQty" value="1" step="0.5" placeholder="مثال: 2">
-                </div>
-            </div>
-            <button class="btn" style="margin-top: 14px;" onclick="addMaterial()">+ إضافة المادة للمخزون والمصاريف</button>
-        </div>
-
-        <div class="card">
-            <h2>قائمة المواد وتكاليفها (يمكنك تعديل الأسعار والكميات مباشرة)</h2>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>اسم المادة</th>
-                            <th>وزن الوحدة (جرام)</th>
-                            <th>سعر الوحدة (ليرة)</th>
-                            <th>الكمية المشتراة</th>
-                            <th>إجمالي التكلفة المدفوعة</th>
-                            <th>حذف</th>
-                        </tr>
-                    </thead>
-                    <tbody id="materialsTbody"></tbody>
-                </table>
-            </div>
-        </div>
+  <!-- 2. المواد -->
+  <div id="secM" class="sec">
+    <div class="card">
+      <h2>+ تسجيل مادة خام جديدة (يدوياً)</h2>
+      <div class="grid-f">
+        <div class="fg"><label>اسم المادة / المنتج</label><input id="mName" placeholder="صدور دجاج، شوفان، علب..."></div>
+        <div class="fg"><label>وزن الوحدة بالجرام (1 كيلو=1000)</label><input type="number" id="mWeight" value="1000"></div>
+        <div class="fg"><label>سعر الوحدة (ليرة)</label><input type="number" id="mPrice" placeholder="150"></div>
+        <div class="fg"><label>الكمية المشتراة فعلياً</label><input type="number" id="mQty" value="1" step="0.5"></div>
+      </div>
+      <button type="button" class="btn" style="margin-top:12px" onclick="addMat()">+ إضافة المادة للمخزون والمصاريف</button>
     </div>
-
-    <!-- 3. قسم حاسبة تكلفة الطبق -->
-    <div id="calcSec" class="section">
-        <div class="card">
-            <h2>⚖️ حاسبة تكلفة الطبق الواحد</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>اسم الطبق</label>
-                    <input type="text" id="dName" placeholder="مثال: وجبة دجاج مشوي 200ج مع رز">
-                </div>
-                <div class="form-group">
-                    <label>اختر المكون من موادك المسجلة</label>
-                    <select id="dMatSelect"></select>
-                </div>
-                <div class="form-group">
-                    <label>الكمية الموضوعة في الطبق (جرام)</label>
-                    <input type="number" id="dGrams" placeholder="مثال: 200">
-                </div>
-                <div class="form-group">
-                    <label>تكلفة إضافية للطبق (علبة، غاز، بهارات)</label>
-                    <input type="number" id="dExtra" value="0" oninput="renderCurrentDish()">
-                </div>
-            </div>
-            <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="btn" onclick="addIngredientToDish()">+ أضف المكون للطبق</button>
-                <button class="btn btn-outline" onclick="addManualIngredientToDish()">+ إضافة مكون خارجي سريع</button>
-                <button class="btn btn-danger" onclick="clearCurrentDish()">تصفير الحاسبة</button>
-            </div>
-
-            <div class="table-wrap" style="margin-top: 16px;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>المكون في الطبق</th>
-                            <th>الكمية</th>
-                            <th>التكلفة الدقيقة</th>
-                            <th>حذف</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dishTbody"></tbody>
-                </table>
-            </div>
-
-            <div class="finance-bar" style="padding: 0; margin-top: 20px;">
-                <div class="fin-card cost">
-                    <span>تكلفة الطبق الواحد عليك</span>
-                    <strong id="calcOneMeal">0.00 TL</strong>
-                </div>
-                <div class="fin-card unpaid">
-                    <span>تكلفة 6 وجبات (أسبوع)</span>
-                    <strong id="calcSixMeals">0.00 TL</strong>
-                </div>
-                <div class="fin-card paid">
-                    <span>سعر البيع المقترح للوجبة (×2.5)</span>
-                    <strong id="calcSuggest">0.00 TL</strong>
-                </div>
-            </div>
-
-            <button class="btn btn-success" style="width: 100%; margin-top: 12px;" onclick="saveCalculatedDish()">💾 حفظ تكلفة هذا الطبق في القائمة المرجعية</button>
-        </div>
-
-        <div class="card">
-            <h2>الأطباق المحسوبة المحفوظة</h2>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>اسم الطبق</th>
-                            <th>تفاصيل المكونات</th>
-                            <th>تكلفة الطبق الواحد</th>
-                            <th>حذف</th>
-                        </tr>
-                    </thead>
-                    <tbody id="savedDishesTbody"></tbody>
-                </table>
-            </div>
-        </div>
+    <div class="card">
+      <h2>قائمة المواد وتكاليفها (قابلة للتعديل المباشر)</h2>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>المادة</th><th>الوزن (g)</th><th>السعر (TL)</th><th>الكمية</th><th>الإجمالي</th><th>حذف</th></tr></thead>
+          <tbody id="mList"></tbody>
+        </table>
+      </div>
     </div>
+  </div>
 
-    <!-- 4. قسم دفتر الوصفات القياسية -->
-    <div id="recipesSec" class="section">
-        <div class="card">
-            <h2>📖 إضافة وصفة قياسية (لتوحيد الطعم وعدم نسيان أي مكون)</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>اسم الوجبة / الوصفة</label>
-                    <input type="text" id="rTitle" placeholder="مثال: تتبيلة صدور الدجاج المعتمدة / جرانولا العسل">
-                </div>
-                <div class="form-group">
-                    <label>درجة الحرارة / مدة الطبخ</label>
-                    <input type=
+  <!-- 3. حاسبة الطبق -->
+  <div id="secD" class="sec">
+    <div class="card">
+      <h2>⚖️ حاسبة تكلفة الطبق الواحد</h2>
+      <div class="grid-f">
+        <div class="fg"><label>اسم الطبق</label><input id="dName" placeholder="وجبة دجاج 200ج مع رز"></div>
+        <div class="fg"><label>اختر المكون من موادك</label><select id="dSel"></select></div>
+        <div class="fg"><label>الكمية في الطبق (جرام)</label><input type="number" id="dGrams" placeholder="200"></div>
+        <div class="fg"><label>تكلفة إضافية (علبة/بهارات)</label><input type="number" id="dExt" value="0" oninput="renderDish()"></div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn" onclick="addIng()">+ أضف المكون للطبق</button>
+        <button type="button" class="btn btn-out" onclick="addCustomIng()">+ مكون خارجي سريع</button>
+        <button type="button" class="btn btn-err" onclick="clearDish()">تصفير الحاسبة</button>
+      </div>
+      <table>
+        <thead><tr><th>المكون</th><th>الكمية</th><th>التكلفة</th><th>حذف</th></tr></thead>
+        <tbody id="dList"></tbody>
+      </table>
+      <div class="fin-bar" style="padding:0;margin-top:15px">
+        <div class="f-card cost"><span>تكلفة الطبق الواحد</span><strong id="cOne">0.00 TL</strong></div>
+        <div class="f-card unpaid"><span>تكلفة 6 وجبات (أسبوع)</span><strong id="cSix">0.00 TL</strong></div>
+        <div class="f-card paid"><span>سعر البيع المقترح (×2.5)</span><strong id="cSug">0.00 TL</strong></div>
+      </div>
+      <button type="button" class="btn btn-ok" style="width:100%;margin-top:10px" onclick="saveDish()">💾 حفظ الطبق في القائمة المرجعية</button>
+    </div>
+    <div class="card">
+      <h2>الأطباق المحفوظة وتكاليفها</h2>
+      <table>
+        <thead><tr><th>اسم الطبق</th><th>المكونات</th><th>تكلفة الطبق</th><th>حذف</th></tr></thead>
+        <tbody id="sDishes"></tbody>
+      </table>
+    </div>
+  </div>
 
-          
+  <!-- 4. دفتر الوصفات -->
+  <div id="secR" class="sec">
+    <div class="card">
+      <h2>📖 إضافة وصفة قياسية لتوحيد الجودة</h2>
+      <div class="grid-f">
+        <div class="fg"><label>اسم الوجبة / الوصفة</label><input id="rTitle" placeholder="تتبيلة الدجاج / الجرانولا"></div>
+        <div class="fg"><label>الحرارة ومدة الطبخ</label><input id="rTime" placeholder="فرن 200 درجة - 25 دقيقة"></div>
+      </div>
+      <div class="fg" style="margin-top:10px"><label>المكونات والبهارات (كل مكون في سطر ليظهر كقائمة فحص ✓)</label><textarea id="rIngs" rows="3" placeholder="200 جرام دجاج&#10;ملعقة بابريكا&#10;رشة ملح وفلفل"></textarea></div>
+      <div class="fg" style="margin-top:10px"><label>خطوات التحضير</label><textarea id="rSteps" rows="2" placeholder="اكتب خطوات الطبخ بالتفصيل..."></textarea></div>
+      <button type="button" class="btn" style="margin-top:12px" onclick="addRec()">+ حفظ الوصفة في الدفتر</button>
+    </div>
+    <div id="rList" class="cards-g"></div>
+  </div>
+</div>
+
+<script>
+var db = {clients:[], mats:[], dishes:[], recs:[]};
+var curDish = [];
+try {
+  var saved = localStorage.getItem('mawzoon_db');
+  if (saved) db = JSON.parse(saved);
+} catch(e) {}
+
+function save() {
+  try { localStorage.setItem('mawzoon_db', JSON.stringify(db)); } catch(e) {}
+  calcTop();
+}
+
+function calcTop() {
+  var p = 0, u = 0, c = 0;
+  db.clients.forEach(function(x){ var v = parseFloat(x.price)||0; if(x.paid) p+=v; else u+=v; });
+  db.mats.forEach(function(m){ c += (parseFloat(m.price)||0) * (parseFloat(m.qty)||0); });
+  var net = p - c;
+  document.getElementById('fPaid').innerText = p.toFixed(2) + ' TL';
+  document.getElementById('fUnpaid').innerText = u.toFixed(2) + ' TL';
+  document.getElementById('fCost').innerText = c.toFixed(2) + ' TL';
+  var prEl = document.getElementById('fProf');
+  prEl.innerText = net.toFixed(2) + ' TL';
+  prEl.style.color = net >= 0 ? 'var(--ok)' : 'var(--err)';
+}
+
+window.openTab = function(id, btn) {
+  document.querySelectorAll('.sec').forEach(function(s){ s.classList.remove('active'); });
+  document.querySelectorAll('.t-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'secD') fillSelect();
+};
+
+window.addClient = function() {
+  var name = document.getElementById('cName').value.trim();
+  if (!name) return alert('الرجاء كتابة اسم المشترك');
+  db.clients.push({
+    id: Date.now(), name: name,
+    price: parseFloat(document.getElementById('cPrice').value)||0,
+    paid: document.getElementById('cPaid').value === '1',
+    meals: parseInt(document.getElementById('cMeals').value)||1,
+    days: parseInt(document.getElementById('cDays').value)||6,
+    deliv: 0,
+    cal: document.getElementById('cCal').value||0,
+    pro: document.getElementById('cPro').value||0,
+    carb: document.getElementById('cCarb').value||0,
+    fat: document.getElementById('cFat').value||0,
+    notes: document.getElementById('cNotes').value||'',
+    extra: []
+  });
+  ['cName','cPrice','cCal','cPro','cCarb','cFat','cNotes'].forEach(function(k){ document.getElementById(k).value=''; });
+  save(); renderClients();
+};
+
+window.togPaid = function(id) {
+  var c = db.clients.find(function(x){return x.id===id;});
+  if(c){ c.paid = !c.paid; save(); renderClients(); }
+};
+window.upCPrice = function(id, v) {
+  var c = db.clients.find(function(x){return x.id===id;});
+  if(c){ c.price = parseFloat(v)||0; save(); }
+};
+window.upDeliv = function(id, d) {
+  var c = db.clients.find(function(x){return x.id===id;});
+  if(c){ c.deliv = Math.max(0, c.deliv + d); save(); renderClients(); }
+};
+window.upNotes = function(id, v) {
+  var c = db.clients.find(function(x){return x.id===id;});
+  if(c){ c.notes = v; save(); }
+};
+window.addCField = function(id) {
+  var k = prompt('عنوان الخانة الإضافية (مثال: وقت التسليم / نوع الجرانولا):');
+  if(!k) return;
+  var v = prompt('التفاصيل:') || '';
+  var c = db.clients.find(function(x){return x.id===id;});
+  if(c){ if(!c.extra) c.extra=[]; c.extra.push({k:k, v:v}); save(); renderClients(); }
+};
+window.delClient = function(id) {
+  if(confirm('حذف المشترك؟')){ db.clients = db.clients.filter(function(x){return x.id!==id;}); save(); renderClients(); }
+};
+
+function renderClients() {
+  var box = document.getElementById('cList');
+  if(!db.clients.length){ box.innerHTML='<p style="color:var(--m)">لا يوجد مشتركون حالياً.</p>'; return; }
+  box.innerHTML = db.clients.map(function(c){
+    var ex = (c.extra||[]).map(function(e){ return '<div class="row-b" style="background:#fdfaf3"><span><b>'+e.k+':</b> '+e.v+'</span></div>'; }).join('');
+    return '<div class="i-card">' +
+      '<div class="row-b"><strong style="font-size:1.2rem;color:var(--p)">'+c.name+'</strong>' +
+      '<button type="button" class="btn btn-sm '+(c.paid?'btn-ok':'btn-err')+'" onclick="togPaid('+c.id+')">'+(c.paid?'✅ تم الدفع':'❌ لم يدفع')+'</button></div>' +
+      '<div class="row-b"><span>مبلغ الاشتراك (TL):</span><input type="number" class="in-sm" value="'+c.price+'" oninput="upCPrice('+c.id+',this.value)"></div>' +
+      '<div class="mac-g"><div><span>سعرات</span><strong>'+c.cal+'</strong></div><div><span>بروتين</span><strong>'+c.pro+'g</strong></div><div><span>كارب</span><strong>'+c.carb+'g</strong></div><div><span>دهون</span><strong>'+c.fat+'g</strong></div></div>' +
+      '<div class="row-b"><span>'+c.meals+' وجبات | سُلّم: <b>'+c.deliv+'/'+c.days+'</b></span><div><button type="button" class="btn btn-sm btn-ok" onclick="upDeliv('+c.id+',1)">+ يوم</button> <button type="button" class="btn btn-sm btn-out" onclick="upDeliv('+c.id+',-1)">-</button></div></div>' +
+      ex +
+      '<textarea rows="2" placeholder="انطباع المشترك وملاحظاتك..." oninput="upNotes('+c.id+',this.value)">'+c.notes+'</textarea>' +
+      '<div style="display:flex;justify-content:space-between"><button type="button" class="btn btn-sm btn-out" onclick="addCField('+c.id+')">+ خانة مخصصة</button><button type="button" class="btn btn-sm btn-err" onclick="delClient('+c.id+')">حذف</button></div>' +
+    '</div>';
+  }).join('');
+}
+
+window.addMat = function() {
+  var name = document.getElementById('mName').value.trim();
+  if(!name) return alert('اكتب اسم المادة');
+  db.mats.push({
+    id: Date.now(), name: name,
+    weight: parseFloat(document.getElementById('mWeight').value)||1000,
+    price: parseFloat(document.getElementById('mPrice').value)||0,
+    qty: parseFloat(document.getElementById('mQty').value)||1
+  });
+  document.getElementById('mName').value=''; document.getElementById('mPrice').value='';
+  save(); renderMats();
+};
+window.upMat = function(id, f, v) {
+  var m = db.mats.find(function(x){return x.id===id;});
+  if(m){ m[f] = parseFloat(v)||0; save(); renderMats(); }
+};
+window.delMat = function(id) {
+  db.mats = db.mats.filter(function(x){return x.id!==id;}); save(); renderMats();
+};
+function renderMats() {
+  var tb = document.getElementById('mList');
+  if(!db.mats.length){ tb.innerHTML='<tr><td colspan="6">أضف موادك وأسعارها من الأعلى.</td></tr>'; return; }
+  tb.innerHTML = db.mats.map(function(m){
+    return '<tr><td><b>'+m.name+'</b></td>' +
+      '<td><input type="number" class="in-sm" value="'+m.weight+'" onchange="upMat('+m.id+',\'weight\',this.value)"></td>' +
+      '<td><input type="number" class="in-sm" value="'+m.price+'" onchange="upMat('+m.id+',\'price\',this.value)"></td>' +
+      '<td><input type="number" step="0.5" class="in-sm" value="'+m.qty+'" onchange="upMat('+m.id+',\'qty\',this.value)"></td>' +
+      '<td><b style="color:var(--err)">'+(m.price*m.qty).toFixed(2)+' TL</b></td>' +
+      '<td><button type="button" class="btn btn-sm btn-err" onclick="delMat('+m.id+')">×</button></td></tr>';
+  }).join('');
+}
+
+function fillSelect() {
+  var s = document.getElementById('dSel');
+  if(!db.mats.length){ s.innerHTML='<option value="">-- أضف مواد في قسم المواد أولاً --</option>'; return; }
+  s.innerHTML = db.mats.map(function(m){ return '<option value="'+m.id+'">'+m.name+' ('+m.price+' TL / '+m.weight+'g)</option>'; }).join('');
+}
+window.addIng = function() {
+  var id = parseInt(document.getElementById('dSel').value);
+  var g = parseFloat(document.getElementById('dGrams').value);
+  if(!id || !g) return alert('اختر المادة وحدد الجرامات');
+  var m = db.mats.find(function(x){return x.id===id;});
+  curDish.push({id:Date.now(), name:m.name, g:g+'g', cost:(m.price/m.weight)*g});
+  document.getElementById('dGrams').value=''; renderDish();
+};
+window.addCustomIng = function() {
+  var n = prompt('اسم المكون:'); if(!n) return;
+  var c = parseFloat(prompt('تكلفته بالليرة:'))||0;
+  curDish.push({id:Date.now(), name:n, g:'مخصص', cost:c}); renderDish();
+};
+window.delIng = function(id) { curDish = curDish.filter(function(x){return x.id!==id;}); renderDish(); };
+window.clearDish = function() { curDish=[]; document.getElementById('dExt').value=0; document.getElementById('dName').value=''; renderDish(); };
+window.renderDish = function() {
+  var tot = parseFloat(document.getElementById('dExt').value)||0;
+  document.getElementById('dList').innerHTML = curDish.map(function(i){
+    tot += i.cost;
+    return '<tr><td>'+i.name+'</td><td>'+i.g+'</td><td><b>'+i.cost.toFixed(2)+' TL</b></td><td><button type="button" class="btn btn-sm btn-err" onclick="delIng('+i.id+')">×</button></td></tr>';
+  }).join('');
+  document.getElementById('cOne').innerText = tot.toFixed(2)+' TL';
+  document.getElementById('cSix').innerText = (tot*6).toFixed(2)+' TL';
+  document.getElementById('cSug').innerText = (tot*2.5).toFixed(2)+' TL';
+};
+window.saveDish = function() {
+  if(!curDish.length) return alert('أضف مكونات للطبق أولاً');
+  var n = document.getElementById('dName').value.trim()||'طبق محسوب';
+  var ext = parseFloat(document.getElementById('dExt').value)||0;
+  var tot = curDish.reduce(function(s,i){return s+i.cost;}, ext);
+  var det = curDish.map(function(i){return i.name+'('+i.g+')';}).join(' + ');
+  db.dishes.push({id:Date.now(), name:n, det:det, tot:tot.toFixed(2)});
+  save(); renderSavedDishes(); clearDish();
+};
+window.delSavedDish = function(id) { db.dishes = db.dishes.filter(function(x){return x.id!==id;}); save(); renderSavedDishes(); };
+function renderSavedDishes() {
+  document.getElementById('sDishes').innerHTML = db.dishes.map(function(d){
+    return '<tr><td><b>'+d.name+'</b></td><td>'+d.det+'</td><td><b>'+d.tot+' TL</b></td><td><button type="button" class="btn btn-sm btn-err" onclick="delSavedDish('+d.id+')">×</button></td></tr>';
+  }).join('');
+}
+
+window.addRec = function() {
+  var t = document.getElementById('rTitle').value.trim();
+  if(!t) return alert('اكتب اسم الوصفة');
+  var ings = document.getElementById('rIngs').value.split('\n').map(function(x){return x.trim();}).filter(Boolean).map(function(x){return {t:x, c:false};});
+  db.recs.push({id:Date.now(), title:t, time:document.getElementById('rTime').value, ings:ings, steps:document.getElementById('rSteps').value});
+  ['rTitle','rTime','rIngs','rSteps'].forEach(function(k){document.getElementById(k).value='';});
+  save(); renderRecs();
+};
+window.togChk = function(rid, idx) {
+  var r = db.recs.find(function(x){return x.id===rid;});
+  if(r){ r.ings[idx].c = !r.ings[idx].c; save(); renderRecs(); }
+};
+window.delRec = function(id) { if(confirm('حذف الوصفة؟')){ db.recs = db.recs.filter(function(x){return x.id!==id;}); save(); renderRecs(); } };
+function renderRecs() {
+  var box = document.getElementById('rList');
+  if(!db.recs.length){ box.innerHTML='<p style="color:var(--m)">لا توجد وصفات مسجلة.</p>'; return; }
+  box.innerHTML = db.recs.map(function(r){
+    var chks = r.ings.map(function(g,i){
+      return '<label class="chk-row '+(g.c?'done':'')+'"><input type="checkbox" '+(g.c?'checked':'')+' onchange="togChk('+r.id+','+i+')"><span>'+g.t+'</span></label>';
+    }).join('');
+    return '<div class="i-card"><div class="row-b"><b>🍲 '+r.title+'</b><small>'+r.time+'</small></div><div>'+chks+'</div><div style="background:var(--bg);padding:8px;border-radius:6px;white-space:pre-line">'+r.steps+'</div><button type="button" class="btn btn-sm btn-err" onclick="delRec('+r.id+')">حذف الوصفة</button></div>';
+  }).join('');
+}
+
+window.exportData = function() {
+  var a = document.createElement('a');
+  a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(db));
+  a.download = "mawzoon_backup.json"; a.click();
+};
+window.importData = function(e) {
+  var f = e.target.files[0]; if(!f) return;
+  var r = new FileReader();
+  r.onload = function(ev){ try{ db=JSON.parse(ev.target.result); save(); init(); alert('تم استرجاع النسخة!'); }catch(x){alert('خطأ في الملف');} };
+  r.readAsText(f);
+};
+
+function init() { calcTop(); renderClients(); renderMats(); renderSavedDishes(); renderRecs(); document.getElementById('sysStatus').innerText='✅ مفعل'; }
+init();
+</script>
+</body>
+</html>
