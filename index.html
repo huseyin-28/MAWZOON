@@ -8,37 +8,39 @@
 <style>
 :root{--p:#3b4d28;--bg:#f4f5f0;--c:#fff;--t:#222;--m:#687063;--ok:#1f8b4c;--w:#d97706;--err:#dc2626;--b:#dfe3d8}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
-body{background:var(--bg);color:var(--t);padding-bottom:50px}
-header{background:var(--p);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
-header h1{font-size:1.35rem}
+body{background:var(--bg);color:var(--t);padding-bottom:60px}
+header{background:var(--p);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+header h1{font-size:1.3rem}
 .top-btns button{background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px}
-.fin-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:1200px;margin:15px auto;padding:0 15px}
+.fin-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;max-width:1200px;margin:15px auto;padding:0 15px}
 .f-card{background:var(--c);padding:14px;border-radius:10px;border-right:5px solid var(--p);box-shadow:0 2px 5px rgba(0,0,0,0.04)}
 .f-card.paid{border-right-color:var(--ok)}.f-card.unpaid{border-right-color:var(--w)}.f-card.cost{border-right-color:var(--err)}.f-card.prof{background:#eef3e8}
-.f-card span{font-size:.85rem;color:var(--m);font-weight:700;display:block}
-.f-card strong{font-size:1.45rem;font-weight:800;margin-top:4px;display:block}
+.f-card span{font-size:.82rem;color:var(--m);font-weight:700;display:block}
+.f-card strong{font-size:1.4rem;font-weight:800;margin-top:4px;display:block}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;background:#e6e9df;padding:10px 15px;justify-content:center;position:sticky;top:0;z-index:99}
-.t-btn{background:#fff;border:none;padding:12px 18px;font-size:.95rem;font-weight:700;border-radius:8px;cursor:pointer;flex:1;min-width:160px;max-width:250px}
+.t-btn{background:#fff;border:none;padding:11px 16px;font-size:.95rem;font-weight:700;border-radius:8px;cursor:pointer;flex:1;min-width:155px;max-width:250px}
 .t-btn.active{background:var(--p);color:#fff}
 .wrap{max-width:1200px;margin:18px auto;padding:0 15px}
 .sec{display:none}.sec.active{display:block}
 .card{background:var(--c);border-radius:12px;padding:18px;margin-bottom:18px;border:1px solid var(--b)}
-.card h2{color:var(--p);font-size:1.2rem;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--bg)}
-.grid-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}
+.card h2{color:var(--p);font-size:1.15rem;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--bg)}
+.grid-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
 .fg{display:flex;flex-direction:column}
-.fg label{font-size:.85rem;font-weight:700;margin-bottom:5px}
-input,select,textarea{padding:10px;border:1px solid var(--b);border-radius:8px;font-size:.95rem;background:#fafbf9}
-.btn{background:var(--p);color:#fff;border:none;padding:10px 18px;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer}
-.btn-ok{background:var(--ok)}.btn-err{background:var(--err)}.btn-out{background:#eef1ea;color:var(--p);border:1px solid var(--p)}.btn-sm{padding:6px 10px;font-size:.82rem}
-.cards-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.fg label{font-size:.82rem;font-weight:700;margin-bottom:4px}
+input,select,textarea{padding:9px;border:1px solid var(--b);border-radius:8px;font-size:.92rem;background:#fafbf9}
+.btn{background:var(--p);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-size:.92rem;font-weight:700;cursor:pointer}
+.btn-ok{background:var(--ok)}.btn-w{background:var(--w)}.btn-err{background:var(--err)}.btn-out{background:#eef1ea;color:var(--p);border:1px solid var(--p)}.btn-sm{padding:5px 10px;font-size:.8rem}
+.cards-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
 .i-card{background:#fff;border-radius:12px;padding:16px;border:1px solid var(--b);display:flex;flex-direction:column;gap:10px}
-.row-b{display:flex;justify-content:space-between;align-items:center;background:#f8faf6;padding:8px 10px;border-radius:8px;border:1px solid var(--b)}
+.row-b{display:flex;justify-content:space-between;align-items:center;background:#f8faf6;padding:8px 10px;border-radius:8px;border:1px solid var(--b);gap:6px;flex-wrap:wrap}
 .mac-g{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg);padding:8px;border-radius:8px;text-align:center}
 .mac-g span{font-size:.75rem;color:var(--m);display:block}.mac-g strong{color:var(--p)}
 table{width:100%;border-collapse:collapse;margin-top:10px}
-th,td{padding:10px;text-align:right;border-bottom:1px solid var(--b)}
+th,td{padding:9px;text-align:right;border-bottom:1px solid var(--b);font-size:.9rem}
 th{background:var(--bg);color:var(--p)}
-.in-sm{width:90px;padding:5px;border-radius:6px;border:1px solid var(--b)}
+.in-sm{width:85px;padding:5px;border-radius:6px;border:1px solid var(--b)}
+.meal-box{background:#f9fbf7;border:1px dashed var(--p);padding:10px;border-radius:8px}
+.edit-box{background:#fff9eb;border:1px solid var(--w);padding:10px;border-radius:8px;display:none}
 .chk-row{display:flex;align-items:center;gap:8px;padding:7px;background:var(--bg);border-radius:6px;margin-bottom:5px}
 .chk-row.done span{text-decoration:line-through;color:var(--m)}
 </style>
@@ -46,7 +48,7 @@ th{background:var(--bg);color:var(--p)}
 <body>
 
 <header>
-  <h1>MAWZOON | موزون <small id="sysStatus" style="font-size:.8rem;background:#1f8b4c;padding:3px 8px;border-radius:12px;margin-right:8px;">⏳</small></h1>
+  <h1>MAWZOON | موزون <small id="sysStatus" style="font-size:.78rem;background:#1f8b4c;padding:3px 8px;border-radius:12px;margin-right:6px;">⏳</small></h1>
   <div class="top-btns">
     <button type="button" onclick="exportData()">📥 حفظ نسخة احتياطية</button>
     <button type="button" onclick="document.getElementById('impF').click()">📤 استرجاع نسخة</button>
@@ -58,14 +60,14 @@ th{background:var(--bg);color:var(--p)}
   <div class="f-card paid"><span>💰 المدفوعات المستلمة (كاش)</span><strong id="fPaid">0.00 TL</strong></div>
   <div class="f-card unpaid"><span>⏳ مبالغ قيد التحصيل (لم يدفع)</span><strong id="fUnpaid">0.00 TL</strong></div>
   <div class="f-card cost"><span>🛒 التكلفة الإجمالية للمواد</span><strong id="fCost">0.00 TL</strong></div>
-  <div class="f-card prof"><span>📈 صافي الأرباح الفعلي</span><strong id="fProf">0.00 TL</strong></div>
+  <div class="f-card prof"><span>📈 صافي الأرباح العام</span><strong id="fProf">0.00 TL</strong></div>
 </div>
 
 <div class="tabs">
-  <button type="button" class="t-btn active" onclick="openTab('secC',this)">👤 المشتركون والمدفوعات</button>
-  <button type="button" class="t-btn" onclick="openTab('secM',this)">🛒 المواد والتكلفة الإجمالية</button>
-  <button type="button" class="t-btn" onclick="openTab('secD',this)">⚖️ حاسبة تكلفة الطبق</button>
-  <button type="button" class="t-btn" onclick="openTab('secR',this)">📖 دفتر الوصفات والمقادير</button>
+  <button type="button" class="t-btn active" onclick="openTab('secC',this)">👤 المشتركون ووجباتهم</button>
+  <button type="button" class="t-btn" onclick="openTab('secM',this)">🛒 المخزون والمواد</button>
+  <button type="button" class="t-btn" onclick="openTab('secD',this)">⚖️ حاسبة الطبق الشاملة</button>
+  <button type="button" class="t-btn" onclick="openTab('secR',this)">📖 دفتر الوصفات</button>
 </div>
 
 <div class="wrap">
@@ -74,8 +76,8 @@ th{background:var(--bg);color:var(--p)}
     <div class="card">
       <h2>+ إضافة مشترك جديد</h2>
       <div class="grid-f">
-        <div class="fg"><label>اسم المشترك</label><input id="cName" placeholder="مثال: عمر"></div>
-        <div class="fg"><label>مبلغ الاشتراك (ليرة)</label><input type="number" id="cPrice" placeholder="1500"></div>
+        <div class="fg"><label>اسم المشترك</label><input id="cName" placeholder="مثال: سالم"></div>
+        <div class="fg"><label>سعر الاشتراك (ليرة)</label><input type="number" id="cPrice" placeholder="1000"></div>
         <div class="fg"><label>حالة الدفع</label><select id="cPaid"><option value="1">✅ تم الدفع</option><option value="0">❌ لم يدفع بعد</option></select></div>
         <div class="fg"><label>الوجبات يومياً</label><input type="number" id="cMeals" value="2"></div>
         <div class="fg"><label>أيام الاشتراك</label><input type="number" id="cDays" value="6"></div>
@@ -84,65 +86,72 @@ th{background:var(--bg);color:var(--p)}
         <div class="fg"><label>الكارب (g)</label><input type="number" id="cCarb" placeholder="200"></div>
         <div class="fg"><label>الدهون (g)</label><input type="number" id="cFat" placeholder="60"></div>
       </div>
-      <div class="fg" style="margin-top:10px"><label>انطباع المشترك وملاحظاتي الخاصة</label><textarea id="cNotes" rows="2" placeholder="اكتب تفضيلات المشترك أو رأيه في الوجبات..."></textarea></div>
-      <button type="button" class="btn" style="margin-top:12px" onclick="addClient()">+ إضافة المشترك للقائمة</button>
+      <div class="fg" style="margin-top:10px"><label>انطباع المشترك وملاحظاتي الخاصة</label><textarea id="cNotes" rows="2" placeholder="تفضيلات المشترك أو رأيه في الأكل..."></textarea></div>
+      <button type="button" class="btn" style="margin-top:12px" onclick="addClient()">+ إضافة المشترك (ثم أضف وجباته بداخل بطاقته)</button>
     </div>
     <div id="cList" class="cards-g"></div>
   </div>
 
-  <!-- 2. المواد -->
+  <!-- 2. المخزون والمواد -->
   <div id="secM" class="sec">
     <div class="card">
-      <h2>+ تسجيل مادة خام جديدة (يدوياً)</h2>
+      <h2>+ تسجيل شراء مادة خام جديدة للمخزون</h2>
       <div class="grid-f">
-        <div class="fg"><label>اسم المادة / المنتج</label><input id="mName" placeholder="صدور دجاج، شوفان، علب..."></div>
-        <div class="fg"><label>وزن الوحدة بالجرام (1 كيلو=1000)</label><input type="number" id="mWeight" value="1000"></div>
-        <div class="fg"><label>سعر الوحدة (ليرة)</label><input type="number" id="mPrice" placeholder="150"></div>
-        <div class="fg"><label>الكمية المشتراة فعلياً</label><input type="number" id="mQty" value="1" step="0.5"></div>
+        <div class="fg"><label>اسم المادة / المكون</label><input id="mName" placeholder="مثال: صدور دجاج"></div>
+        <div class="fg"><label>تاريخ الشراء</label><input type="date" id="mDate"></div>
+        <div class="fg"><label>الكمية المشتراة بالجرام (1 كيلو = 1000)</label><input type="number" id="mWeight" value="1000"></div>
+        <div class="fg"><label>إجمالي سعر الشراء (ليرة)</label><input type="number" id="mPrice" placeholder="100"></div>
       </div>
-      <button type="button" class="btn" style="margin-top:12px" onclick="addMat()">+ إضافة المادة للمخزون والمصاريف</button>
+      <button type="button" class="btn" style="margin-top:12px" onclick="addMat()">+ إضافة المادة للمخزون</button>
     </div>
     <div class="card">
-      <h2>قائمة المواد وتكاليفها (قابلة للتعديل المباشر)</h2>
+      <h2>📦 جرد المخزون المتبقي وتكاليف المواد</h2>
       <div style="overflow-x:auto">
         <table>
-          <thead><tr><th>المادة</th><th>الوزن (g)</th><th>السعر (TL)</th><th>الكمية</th><th>الإجمالي</th><th>حذف</th></tr></thead>
+          <thead><tr><th>المادة</th><th>تاريخ الشراء</th><th>الكمية المشتراة</th><th>المستهلك (g)</th><th>المتبقي بالمخزون</th><th>سعر الشراء</th><th>حذف</th></tr></thead>
           <tbody id="mList"></tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- 3. حاسبة الطبق -->
+  <!-- 3. حاسبة الطبق الشاملة -->
   <div id="secD" class="sec">
     <div class="card">
-      <h2>⚖️ حاسبة تكلفة الطبق الواحد</h2>
-      <div class="grid-f">
-        <div class="fg"><label>اسم الطبق</label><input id="dName" placeholder="وجبة دجاج 200ج مع رز"></div>
-        <div class="fg"><label>اختر المكون من موادك</label><select id="dSel"></select></div>
-        <div class="fg"><label>الكمية في الطبق (جرام)</label><input type="number" id="dGrams" placeholder="200"></div>
-        <div class="fg"><label>تكلفة إضافية (علبة/بهارات)</label><input type="number" id="dExt" value="0" oninput="renderDish()"></div>
+      <h2>⚖️ حاسبة تكلفة الطبق المتكامل (أضف جميع مكونات الطبق دفعة واحدة)</h2>
+      <div class="grid-f" style="margin-bottom:12px">
+        <div class="fg"><label>اسم الطبق / الوجبة</label><input id="dName" placeholder="مثال: صدور دجاج ورز وخضار"></div>
+        <div class="fg"><label>تكلفة إضافية للطبق (بهارات / علبة / غاز بالليرة)</label><input type="number" id="dExt" value="0" oninput="calcDishLive()"></div>
       </div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-        <button type="button" class="btn" onclick="addIng()">+ أضف المكون للطبق</button>
-        <button type="button" class="btn btn-out" onclick="addCustomIng()">+ مكون خارجي سريع</button>
-        <button type="button" class="btn btn-err" onclick="clearDish()">تصفير الحاسبة</button>
-      </div>
+
       <table>
-        <thead><tr><th>المكون</th><th>الكمية</th><th>التكلفة</th><th>حذف</th></tr></thead>
-        <tbody id="dList"></tbody>
+        <thead><tr><th>اختر المكون من المخزون</th><th>الكمية في الطبق (جرام)</th><th>تكلفة المكون بالطبق</th><th>حذف</th></tr></thead>
+        <tbody id="dRows"></tbody>
       </table>
+
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn btn-out" onclick="addDishRow()">+ إضافة مكون آخر للطبق</button>
+        <button type="button" class="btn btn-err" onclick="initDishRows()">تصفير الحاسبة</button>
+      </div>
+
       <div class="fin-bar" style="padding:0;margin-top:15px">
-        <div class="f-card cost"><span>تكلفة الطبق الواحد</span><strong id="cOne">0.00 TL</strong></div>
-        <div class="f-card unpaid"><span>تكلفة 6 وجبات (أسبوع)</span><strong id="cSix">0.00 TL</strong></div>
+        <div class="f-card cost"><span>إجمالي تكلفة هذا الطبق</span><strong id="cOne">0.00 TL</strong></div>
+        <div class="f-card unpaid"><span>تكلفة 6 أطباق</span><strong id="cSix">0.00 TL</strong></div>
         <div class="f-card paid"><span>سعر البيع المقترح (×2.5)</span><strong id="cSug">0.00 TL</strong></div>
       </div>
-      <button type="button" class="btn btn-ok" style="width:100%;margin-top:10px" onclick="saveDish()">💾 حفظ الطبق في القائمة المرجعية</button>
+
+      <label style="display:flex;align-items:center;gap:8px;margin-top:12px;font-weight:700;color:var(--p)">
+        <input type="checkbox" id="deductNow" checked style="width:18px;height:18px">
+        خصم الجرامات المستعملة في هذا الطبق من المخزون فوراً عند الحفظ
+      </label>
+
+      <button type="button" class="btn btn-ok" style="width:100%;margin-top:10px" onclick="saveDish()">💾 حفظ الطبق واعتماد تكلفته</button>
     </div>
+
     <div class="card">
-      <h2>الأطباق المحفوظة وتكاليفها</h2>
+      <h2>📋 قائمة الأطباق المعتمدة وتكاليفها (تظهر في ملف المشتركين)</h2>
       <table>
-        <thead><tr><th>اسم الطبق</th><th>المكونات</th><th>تكلفة الطبق</th><th>حذف</th></tr></thead>
+        <thead><tr><th>اسم الطبق</th><th>تفاصيل المكونات</th><th>تكلفة الطبق</th><th>إجراء</th></tr></thead>
         <tbody id="sDishes"></tbody>
       </table>
     </div>
@@ -153,7 +162,7 @@ th{background:var(--bg);color:var(--p)}
     <div class="card">
       <h2>📖 إضافة وصفة قياسية لتوحيد الجودة</h2>
       <div class="grid-f">
-        <div class="fg"><label>اسم الوجبة / الوصفة</label><input id="rTitle" placeholder="تتبيلة الدجاج / الجرانولا"></div>
+        <div class="fg"><label>اسم الوجبة / الوصفة</label><input id="rTitle" placeholder="تتبيلة الدجاج / الكفتة / الجرانولا"></div>
         <div class="fg"><label>الحرارة ومدة الطبخ</label><input id="rTime" placeholder="فرن 200 درجة - 25 دقيقة"></div>
       </div>
       <div class="fg" style="margin-top:10px"><label>المكونات والبهارات (كل مكون في سطر ليظهر كقائمة فحص ✓)</label><textarea id="rIngs" rows="3" placeholder="200 جرام دجاج&#10;ملعقة بابريكا&#10;رشة ملح وفلفل"></textarea></div>
@@ -166,11 +175,14 @@ th{background:var(--bg);color:var(--p)}
 
 <script>
 var db = {clients:[], mats:[], dishes:[], recs:[]};
-var curDish = [];
+var dishRows = [];
 try {
   var saved = localStorage.getItem('mawzoon_db');
   if (saved) db = JSON.parse(saved);
 } catch(e) {}
+
+function todayStr(){ return new Date().toISOString().split('T')[0]; }
+document.getElementById('mDate').value = todayStr();
 
 function save() {
   try { localStorage.setItem('mawzoon_db', JSON.stringify(db)); } catch(e) {}
@@ -180,7 +192,10 @@ function save() {
 function calcTop() {
   var p = 0, u = 0, c = 0;
   db.clients.forEach(function(x){ var v = parseFloat(x.price)||0; if(x.paid) p+=v; else u+=v; });
-  db.mats.forEach(function(m){ c += (parseFloat(m.price)||0) * (parseFloat(m.qty)||0); });
+  db.mats.forEach(function(m){
+    var qty = m.qty !== undefined ? parseFloat(m.qty)||1 : 1;
+    c += (parseFloat(m.price)||0) * qty;
+  });
   var net = p - c;
   document.getElementById('fPaid').innerText = p.toFixed(2) + ' TL';
   document.getElementById('fUnpaid').innerText = u.toFixed(2) + ' TL';
@@ -195,9 +210,11 @@ window.openTab = function(id, btn) {
   document.querySelectorAll('.t-btn').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-  if (id === 'secD') fillSelect();
+  if (id === 'secD') renderDishRows();
+  if (id === 'secC') renderClients();
 };
 
+// ================= 1. المشتركون ووجباتهم =================
 window.addClient = function() {
   var name = document.getElementById('cName').value.trim();
   if (!name) return alert('الرجاء كتابة اسم المشترك');
@@ -213,7 +230,7 @@ window.addClient = function() {
     carb: document.getElementById('cCarb').value||0,
     fat: document.getElementById('cFat').value||0,
     notes: document.getElementById('cNotes').value||'',
-    extra: []
+    cMeals: []
   });
   ['cName','cPrice','cCal','cPro','cCarb','cFat','cNotes'].forEach(function(k){ document.getElementById(k).value=''; });
   save(); renderClients();
@@ -223,10 +240,6 @@ window.togPaid = function(id) {
   var c = db.clients.find(function(x){return x.id===id;});
   if(c){ c.paid = !c.paid; save(); renderClients(); }
 };
-window.upCPrice = function(id, v) {
-  var c = db.clients.find(function(x){return x.id===id;});
-  if(c){ c.price = parseFloat(v)||0; save(); }
-};
 window.upDeliv = function(id, d) {
   var c = db.clients.find(function(x){return x.id===id;});
   if(c){ c.deliv = Math.max(0, c.deliv + d); save(); renderClients(); }
@@ -235,113 +248,267 @@ window.upNotes = function(id, v) {
   var c = db.clients.find(function(x){return x.id===id;});
   if(c){ c.notes = v; save(); }
 };
-window.addCField = function(id) {
-  var k = prompt('عنوان الخانة الإضافية (مثال: وقت التسليم / نوع الجرانولا):');
-  if(!k) return;
-  var v = prompt('التفاصيل:') || '';
-  var c = db.clients.find(function(x){return x.id===id;});
-  if(c){ if(!c.extra) c.extra=[]; c.extra.push({k:k, v:v}); save(); renderClients(); }
+window.togEditClient = function(id) {
+  var el = document.getElementById('ed_'+id);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
 };
+window.saveEditClient = function(id) {
+  var c = db.clients.find(function(x){return x.id===id;});
+  if(!c) return;
+  c.name = document.getElementById('en_'+id).value.trim() || c.name;
+  c.price = parseFloat(document.getElementById('ep_'+id).value)||0;
+  c.meals = parseInt(document.getElementById('em_'+id).value)||1;
+  c.days = parseInt(document.getElementById('edays_'+id).value)||1;
+  c.cal = document.getElementById('ecal_'+id).value||0;
+  c.pro = document.getElementById('epro_'+id).value||0;
+  c.carb = document.getElementById('ecarb_'+id).value||0;
+  c.fat = document.getElementById('efat_'+id).value||0;
+  save(); renderClients();
+};
+
+// إضافة وجبة لملف المشترك (من الحاسبة أو يدوياً)
+window.addMealToClient = function(cid) {
+  var c = db.clients.find(function(x){return x.id===cid;});
+  if(!c) return;
+  if(!c.cMeals) c.cMeals = [];
+  var selVal = document.getElementById('msel_'+cid).value;
+  var cnt = parseFloat(document.getElementById('mcnt_'+cid).value)||1;
+  var deduct = document.getElementById('mded_'+cid).checked;
+
+  if(selVal === 'custom') {
+    var mName = prompt('اكتب اسم الوجبة (مثال: كفتة / سلطة):');
+    if(!mName) return;
+    var mCost = parseFloat(prompt('اكتب تكلفة هذه الوجبة بالليرة (مثال: 200):'))||0;
+    c.cMeals.push({id:Date.now(), name: mName + (cnt>1?' (×'+cnt+')':''), cost: mCost * cnt});
+  } else {
+    var dish = db.dishes.find(function(d){return d.id === parseInt(selVal);});
+    if(!dish) return alert('اختر وجبة أولاً');
+    var totalCost = (parseFloat(dish.tot)||0) * cnt;
+    c.cMeals.push({id:Date.now(), name: dish.name + (cnt>1?' (×'+cnt+')':''), cost: totalCost});
+    if(deduct && dish.items) {
+      dish.items.forEach(function(it){
+        var mat = db.mats.find(function(m){return m.id === it.matId;});
+        if(mat) mat.used = (parseFloat(mat.used)||0) + (it.grams * cnt);
+      });
+      renderMats();
+    }
+  }
+  save(); renderClients();
+};
+
+window.delClientMeal = function(cid, mid) {
+  var c = db.clients.find(function(x){return x.id===cid;});
+  if(c && c.cMeals){ c.cMeals = c.cMeals.filter(function(m){return m.id!==mid;}); save(); renderClients(); }
+};
+
 window.delClient = function(id) {
-  if(confirm('حذف المشترك؟')){ db.clients = db.clients.filter(function(x){return x.id!==id;}); save(); renderClients(); }
+  if(confirm('هل أنت متأكد من حذف هذا المشترك؟')){ db.clients = db.clients.filter(function(x){return x.id!==id;}); save(); renderClients(); }
 };
 
 function renderClients() {
   var box = document.getElementById('cList');
-  if(!db.clients.length){ box.innerHTML='<p style="color:var(--m)">لا يوجد مشتركون حالياً.</p>'; return; }
+  if(!db.clients.length){ box.innerHTML='<p style="color:var(--m)">لا يوجد مشتركون حالياً. أضف أول مشترك من الأعلى.</p>'; return; }
+  var dishOpts = db.dishes.map(function(d){ return '<option value="'+d.id+'">'+d.name+' ('+d.tot+' TL)</option>'; }).join('');
+  dishOpts += '<option value="custom">➕ كتابة وجبة وسعرها يدوياً...</option>';
+
   box.innerHTML = db.clients.map(function(c){
-    var ex = (c.extra||[]).map(function(e){ return '<div class="row-b" style="background:#fdfaf3"><span><b>'+e.k+':</b> '+e.v+'</span></div>'; }).join('');
+    var mealsArr = c.cMeals || [];
+    var totalMealsCost = 0;
+    var mealsHtml = mealsArr.map(function(m){
+      totalMealsCost += parseFloat(m.cost)||0;
+      return '<div class="row-b" style="background:#fff;padding:5px 8px"><span>🍽️ '+m.name+'</span><div><b style="color:var(--err)">'+parseFloat(m.cost).toFixed(2)+' TL</b> <button type="button" class="btn btn-sm btn-err" style="padding:2px 6px" onclick="delClientMeal('+c.id+','+m.id+')">×</button></div></div>';
+    }).join('');
+    var clientNet = (parseFloat(c.price)||0) - totalMealsCost;
+
     return '<div class="i-card">' +
-      '<div class="row-b"><strong style="font-size:1.2rem;color:var(--p)">'+c.name+'</strong>' +
-      '<button type="button" class="btn btn-sm '+(c.paid?'btn-ok':'btn-err')+'" onclick="togPaid('+c.id+')">'+(c.paid?'✅ تم الدفع':'❌ لم يدفع')+'</button></div>' +
-      '<div class="row-b"><span>مبلغ الاشتراك (TL):</span><input type="number" class="in-sm" value="'+c.price+'" oninput="upCPrice('+c.id+',this.value)"></div>' +
+      '<div class="row-b"><strong style="font-size:1.2rem;color:var(--p)">👤 '+c.name+'</strong>' +
+      '<div><button type="button" class="btn btn-sm btn-w" onclick="togEditClient('+c.id+')">✏️ تعديل الاشتراك</button> ' +
+      '<button type="button" class="btn btn-sm '+(c.paid?'btn-ok':'btn-err')+'" onclick="togPaid('+c.id+')">'+(c.paid?'✅ تم الدفع':'❌ لم يدفع')+'</button></div></div>' +
+
+      // نافذة التعديل السريع للاشتراك والماكروز
+      '<div id="ed_'+c.id+'" class="edit-box">' +
+        '<div class="grid-f">' +
+          '<div class="fg"><label>الاسم</label><input id="en_'+c.id+'" value="'+c.name+'"></div>' +
+          '<div class="fg"><label>سعر الاشتراك (TL)</label><input type="number" id="ep_'+c.id+'" value="'+c.price+'"></div>' +
+          '<div class="fg"><label>وجبات يومياً</label><input type="number" id="em_'+c.id+'" value="'+c.meals+'"></div>' +
+          '<div class="fg"><label>الأيام</label><input type="number" id="edays_'+c.id+'" value="'+c.days+'"></div>' +
+          '<div class="fg"><label>سعرات</label><input type="number" id="ecal_'+c.id+'" value="'+c.cal+'"></div>' +
+          '<div class="fg"><label>بروتين (g)</label><input type="number" id="epro_'+c.id+'" value="'+c.pro+'"></div>' +
+          '<div class="fg"><label>كارب (g)</label><input type="number" id="ecarb_'+c.id+'" value="'+c.carb+'"></div>' +
+          '<div class="fg"><label>دهون (g)</label><input type="number" id="efat_'+c.id+'" value="'+c.fat+'"></div>' +
+        '</div>' +
+        '<button type="button" class="btn btn-sm btn-ok" style="margin-top:8px;width:100%" onclick="saveEditClient('+c.id+')">💾 حفظ تعديلات المشترك</button>' +
+      '</div>' +
+
       '<div class="mac-g"><div><span>سعرات</span><strong>'+c.cal+'</strong></div><div><span>بروتين</span><strong>'+c.pro+'g</strong></div><div><span>كارب</span><strong>'+c.carb+'g</strong></div><div><span>دهون</span><strong>'+c.fat+'g</strong></div></div>' +
-      '<div class="row-b"><span>'+c.meals+' وجبات | سُلّم: <b>'+c.deliv+'/'+c.days+'</b></span><div><button type="button" class="btn btn-sm btn-ok" onclick="upDeliv('+c.id+',1)">+ يوم</button> <button type="button" class="btn btn-sm btn-out" onclick="upDeliv('+c.id+',-1)">-</button></div></div>' +
-      ex +
+      '<div class="row-b"><span>'+c.meals+' وجبات يومياً | سُلّم: <b>'+c.deliv+'/'+c.days+' أيام</b></span><div><button type="button" class="btn btn-sm btn-ok" onclick="upDeliv('+c.id+',1)">+ تسليم يوم</button> <button type="button" class="btn btn-sm btn-out" onclick="upDeliv('+c.id+',-1)">-</button></div></div>' +
+
+      // قسم وجبات المشترك وحساب تكلفتها
+      '<div class="meal-box">' +
+        '<strong style="font-size:.88rem;color:var(--p);display:block;margin-bottom:6px">📋 وجبات وأطباق ('+c.name+') وتكلفتها:</strong>' +
+        (mealsHtml || '<p style="font-size:.8rem;color:var(--m);margin-bottom:6px">لم يتم تحديد أطباق المشترك بعد.</p>') +
+        '<div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">' +
+          '<select id="msel_'+c.id+'" style="flex:2;min-width:130px;padding:6px">'+dishOpts+'</select>' +
+          '<input type="number" id="mcnt_'+c.id+'" value="1" min="1" style="width:55px;padding:6px" title="العدد">' +
+          '<button type="button" class="btn btn-sm" onclick="addMealToClient('+c.id+')">+ أضف</button>' +
+        '</div>' +
+        '<label style="font-size:.75rem;display:flex;align-items:center;gap:4px;margin-top:5px;color:var(--m)"><input type="checkbox" id="mded_'+c.id+'"> خصم مكونات الطبق من المخزون تلقائياً</label>' +
+        '<div class="row-b" style="margin-top:8px;background:#eef3e8;border-color:var(--p)">' +
+          '<span>إجمالي تكلفة أطباق '+c.name+': <b style="color:var(--err)">'+totalMealsCost.toFixed(2)+' TL</b></span>' +
+          '<span>اشتراكه: <b>'+c.price+' TL</b> | ربحك: <b style="color:'+(clientNet>=0?'var(--ok)':'var(--err)')+'">'+clientNet.toFixed(2)+' TL</b></span>' +
+        '</div>' +
+      '</div>' +
+
       '<textarea rows="2" placeholder="انطباع المشترك وملاحظاتك..." oninput="upNotes('+c.id+',this.value)">'+c.notes+'</textarea>' +
-      '<div style="display:flex;justify-content:space-between"><button type="button" class="btn btn-sm btn-out" onclick="addCField('+c.id+')">+ خانة مخصصة</button><button type="button" class="btn btn-sm btn-err" onclick="delClient('+c.id+')">حذف</button></div>' +
+      '<div style="text-align:left"><button type="button" class="btn btn-sm btn-err" onclick="delClient('+c.id+')">حذف المشترك</button></div>' +
     '</div>';
   }).join('');
 }
 
+// ================= 2. المخزون والمواد =================
 window.addMat = function() {
   var name = document.getElementById('mName').value.trim();
   if(!name) return alert('اكتب اسم المادة');
   db.mats.push({
     id: Date.now(), name: name,
+    date: document.getElementById('mDate').value || todayStr(),
     weight: parseFloat(document.getElementById('mWeight').value)||1000,
+    used: 0,
     price: parseFloat(document.getElementById('mPrice').value)||0,
-    qty: parseFloat(document.getElementById('mQty').value)||1
+    qty: 1
   });
   document.getElementById('mName').value=''; document.getElementById('mPrice').value='';
   save(); renderMats();
 };
 window.upMat = function(id, f, v) {
   var m = db.mats.find(function(x){return x.id===id;});
-  if(m){ m[f] = parseFloat(v)||0; save(); renderMats(); }
+  if(m){ m[f] = f==='date' ? v : (parseFloat(v)||0); save(); renderMats(); }
+};
+window.useMatPrompt = function(id) {
+  var m = db.mats.find(function(x){return x.id===id;});
+  if(!m) return;
+  var g = parseFloat(prompt('كم جرام استهلكت الآن من ('+m.name+')؟'));
+  if(!isNaN(g)){ m.used = (parseFloat(m.used)||0) + g; save(); renderMats(); }
 };
 window.delMat = function(id) {
-  db.mats = db.mats.filter(function(x){return x.id!==id;}); save(); renderMats();
+  if(confirm('حذف المادة من المخزون؟')){ db.mats = db.mats.filter(function(x){return x.id!==id;}); save(); renderMats(); }
 };
 function renderMats() {
   var tb = document.getElementById('mList');
-  if(!db.mats.length){ tb.innerHTML='<tr><td colspan="6">أضف موادك وأسعارها من الأعلى.</td></tr>'; return; }
+  if(!db.mats.length){ tb.innerHTML='<tr><td colspan="7">أضف موادك المشتراة من الأعلى لمتابعة المخزون.</td></tr>'; return; }
   tb.innerHTML = db.mats.map(function(m){
-    return '<tr><td><b>'+m.name+'</b></td>' +
-      '<td><input type="number" class="in-sm" value="'+m.weight+'" onchange="upMat('+m.id+',\'weight\',this.value)"></td>' +
-      '<td><input type="number" class="in-sm" value="'+m.price+'" onchange="upMat('+m.id+',\'price\',this.value)"></td>' +
-      '<td><input type="number" step="0.5" class="in-sm" value="'+m.qty+'" onchange="upMat('+m.id+',\'qty\',this.value)"></td>' +
-      '<td><b style="color:var(--err)">'+(m.price*m.qty).toFixed(2)+' TL</b></td>' +
+    var totW = (parseFloat(m.weight)||0) * (m.qty!==undefined?parseFloat(m.qty)||1:1);
+    var usedW = parseFloat(m.used)||0;
+    var remW = totW - usedW;
+    return '<tr>' +
+      '<td><b>'+m.name+'</b></td>' +
+      '<td><input type="date" style="padding:4px;font-size:.82rem" value="'+(m.date||todayStr())+'" onchange="upMat('+m.id+',\'date\',this.value)"></td>' +
+      '<td><input type="number" class="in-sm" value="'+totW+'" onchange="upMat('+m.id+',\'weight\',this.value)"> g</td>' +
+      '<td><input type="number" class="in-sm" value="'+usedW+'" onchange="upMat('+m.id+',\'used\',this.value)"> g <button type="button" class="btn btn-sm btn-out" onclick="useMatPrompt('+m.id+')" title="خصم استهلاك">- خصم</button></td>' +
+      '<td><strong style="font-size:1rem;color:'+(remW>200?'var(--ok)':'var(--err)')+'">'+remW+' جرام متبقي</strong></td>' +
+      '<td><input type="number" class="in-sm" value="'+m.price+'" onchange="upMat('+m.id+',\'price\',this.value)"> TL</td>' +
       '<td><button type="button" class="btn btn-sm btn-err" onclick="delMat('+m.id+')">×</button></td></tr>';
   }).join('');
 }
 
-function fillSelect() {
-  var s = document.getElementById('dSel');
-  if(!db.mats.length){ s.innerHTML='<option value="">-- أضف مواد في قسم المواد أولاً --</option>'; return; }
-  s.innerHTML = db.mats.map(function(m){ return '<option value="'+m.id+'">'+m.name+' ('+m.price+' TL / '+m.weight+'g)</option>'; }).join('');
-}
-window.addIng = function() {
-  var id = parseInt(document.getElementById('dSel').value);
-  var g = parseFloat(document.getElementById('dGrams').value);
-  if(!id || !g) return alert('اختر المادة وحدد الجرامات');
-  var m = db.mats.find(function(x){return x.id===id;});
-  curDish.push({id:Date.now(), name:m.name, g:g+'g', cost:(m.price/m.weight)*g});
-  document.getElementById('dGrams').value=''; renderDish();
+// ================= 3. حاسبة الطبق الشاملة =================
+window.initDishRows = function() {
+  dishRows = [{grams:''},{grams:''},{grams:''},{grams:''}];
+  document.getElementById('dName').value = '';
+  document.getElementById('dExt').value = 0;
+  renderDishRows();
 };
-window.addCustomIng = function() {
-  var n = prompt('اسم المكون:'); if(!n) return;
-  var c = parseFloat(prompt('تكلفته بالليرة:'))||0;
-  curDish.push({id:Date.now(), name:n, g:'مخصص', cost:c}); renderDish();
+window.addDishRow = function() {
+  dishRows.push({grams:''});
+  renderDishRows();
 };
-window.delIng = function(id) { curDish = curDish.filter(function(x){return x.id!==id;}); renderDish(); };
-window.clearDish = function() { curDish=[]; document.getElementById('dExt').value=0; document.getElementById('dName').value=''; renderDish(); };
-window.renderDish = function() {
-  var tot = parseFloat(document.getElementById('dExt').value)||0;
-  document.getElementById('dList').innerHTML = curDish.map(function(i){
-    tot += i.cost;
-    return '<tr><td>'+i.name+'</td><td>'+i.g+'</td><td><b>'+i.cost.toFixed(2)+' TL</b></td><td><button type="button" class="btn btn-sm btn-err" onclick="delIng('+i.id+')">×</button></td></tr>';
+window.delDishRow = function(idx) {
+  dishRows.splice(idx,1);
+  renderDishRows();
+};
+window.upRowMat = function(idx, val) { dishRows[idx].matId = parseInt(val)||0; calcDishLive(); };
+window.upRowGrams = function(idx, val) { dishRows[idx].grams = parseFloat(val)||0; calcDishLive(); };
+
+function renderDishRows() {
+  if(!dishRows.length) dishRows = [{grams:''},{grams:''},{grams:''}];
+  var tb = document.getElementById('dRows');
+  var opts = '<option value="0">-- اختر المكون --</option>' + db.mats.map(function(m){
+    return '<option value="'+m.id+'">'+m.name+' (متبقي: '+((m.weight||0)-(m.used||0))+'g | '+m.price+' TL)</option>';
   }).join('');
-  document.getElementById('cOne').innerText = tot.toFixed(2)+' TL';
-  document.getElementById('cSix').innerText = (tot*6).toFixed(2)+' TL';
-  document.getElementById('cSug').innerText = (tot*2.5).toFixed(2)+' TL';
+
+  tb.innerHTML = dishRows.map(function(r, idx){
+    return '<tr>' +
+      '<td><select id="rmat_'+idx+'" style="width:100%" onchange="upRowMat('+idx+',this.value)">'+opts+'</select></td>' +
+      '<td><input type="number" placeholder="الوزن بالجرام (مثلاً 200)" value="'+(r.grams||'')+'" oninput="upRowGrams('+idx+',this.value)" style="width:140px"> g</td>' +
+      '<td><strong id="rcost_'+idx+'" style="color:var(--p)">0.00 TL</strong></td>' +
+      '<td><button type="button" class="btn btn-sm btn-err" onclick="delDishRow('+idx+')">×</button></td>' +
+    '</tr>';
+  }).join('');
+
+  dishRows.forEach(function(r, idx){
+    if(r.matId) document.getElementById('rmat_'+idx).value = r.matId;
+  });
+  calcDishLive();
+}
+
+window.calcDishLive = function() {
+  var tot = parseFloat(document.getElementById('dExt').value)||0;
+  dishRows.forEach(function(r, idx){
+    var c = 0;
+    if(r.matId && r.grams) {
+      var m = db.mats.find(function(x){return x.id===r.matId;});
+      if(m && m.weight) c = (m.price / m.weight) * r.grams;
+    }
+    r.cost = c;
+    tot += c;
+    var el = document.getElementById('rcost_'+idx);
+    if(el) el.innerText = c.toFixed(2) + ' TL';
+  });
+  document.getElementById('cOne').innerText = tot.toFixed(2) + ' TL';
+  document.getElementById('cSix').innerText = (tot*6).toFixed(2) + ' TL';
+  document.getElementById('cSug').innerText = (tot*2.5).toFixed(2) + ' TL';
+  return tot;
 };
+
 window.saveDish = function() {
-  if(!curDish.length) return alert('أضف مكونات للطبق أولاً');
-  var n = document.getElementById('dName').value.trim()||'طبق محسوب';
+  var validItems = [];
+  dishRows.forEach(function(r){
+    if(r.matId && r.grams > 0) {
+      var m = db.mats.find(function(x){return x.id===r.matId;});
+      if(m) validItems.push({matId:m.id, name:m.name, grams:r.grams, cost:r.cost});
+    }
+  });
   var ext = parseFloat(document.getElementById('dExt').value)||0;
-  var tot = curDish.reduce(function(s,i){return s+i.cost;}, ext);
-  var det = curDish.map(function(i){return i.name+'('+i.g+')';}).join(' + ');
-  db.dishes.push({id:Date.now(), name:n, det:det, tot:tot.toFixed(2)});
-  save(); renderSavedDishes(); clearDish();
+  if(!validItems.length && !ext) return alert('الرجاء اختيار مكونات الطبق وتحديد الجرامات أولاً');
+
+  var n = document.getElementById('dName').value.trim() || 'طبق متكامل';
+  var tot = calcDishLive();
+  var det = validItems.map(function(i){return i.name+' ('+i.grams+'g)';}).join(' + ');
+  if(ext > 0) det += (det?' + ':'') + 'إضافات/بهارات ('+ext+' TL)';
+
+  if(document.getElementById('deductNow').checked) {
+    validItems.forEach(function(it){
+      var m = db.mats.find(function(x){return x.id===it.matId;});
+      if(m) m.used = (parseFloat(m.used)||0) + it.grams;
+    });
+    renderMats();
+  }
+
+  db.dishes.push({id:Date.now(), name:n, det:det, tot:tot.toFixed(2), items:validItems});
+  save(); renderSavedDishes(); initDishRows();
+  alert('تم حفظ الطبق ('+n+') بتكلفة '+tot.toFixed(2)+' ليرة بنجاح!');
 };
+
 window.delSavedDish = function(id) { db.dishes = db.dishes.filter(function(x){return x.id!==id;}); save(); renderSavedDishes(); };
 function renderSavedDishes() {
-  document.getElementById('sDishes').innerHTML = db.dishes.map(function(d){
-    return '<tr><td><b>'+d.name+'</b></td><td>'+d.det+'</td><td><b>'+d.tot+' TL</b></td><td><button type="button" class="btn btn-sm btn-err" onclick="delSavedDish('+d.id+')">×</button></td></tr>';
+  var tb = document.getElementById('sDishes');
+  if(!db.dishes.length){ tb.innerHTML='<tr><td colspan="4">لم تقم بحفظ أي أطباق بعد.</td></tr>'; return; }
+  tb.innerHTML = db.dishes.map(function(d){
+    return '<tr><td><b>'+d.name+'</b></td><td>'+d.det+'</td><td><b style="color:var(--p)">'+d.tot+' TL</b></td><td><button type="button" class="btn btn-sm btn-err" onclick="delSavedDish('+d.id+')">حذف</button></td></tr>';
   }).join('');
 }
 
+// ================= 4. دفتر الوصفات =================
 window.addRec = function() {
   var t = document.getElementById('rTitle').value.trim();
   if(!t) return alert('اكتب اسم الوصفة');
@@ -378,7 +545,7 @@ window.importData = function(e) {
   r.readAsText(f);
 };
 
-function init() { calcTop(); renderClients(); renderMats(); renderSavedDishes(); renderRecs(); document.getElementById('sysStatus').innerText='✅ مفعل'; }
+function init() { calcTop(); renderClients(); renderMats(); initDishRows(); renderSavedDishes(); renderRecs(); document.getElementById('sysStatus').innerText='✅ النسخة المطورة'; }
 init();
 </script>
 </body>
